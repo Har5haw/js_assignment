@@ -1,0 +1,98 @@
+body {
+    margin: 0px;
+}
+
+.main-body {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.tables {
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+
+.tablesList {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.itemsList {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.items {
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+
+.tableItem {
+    margin: 20px 10px;
+    box-shadow: 1px 1px 5px 1px #888888;
+    padding: 40px 40px;
+    border-radius: 20px;
+}
+
+.tableContent {
+    background-color: lightblue;
+}
+
+.item {
+    margin: 20px 10px;
+    box-shadow: 1px 1px 5px 1px #888888;
+    padding: 40px 40px;
+    border-radius: 20px;
+}
+
+.itemContent {
+    background-color: lightblue;
+}
+
+.popup-on {
+    background-color: rgb(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-off {
+    display: none;
+}
+
+.popupContent {
+    background-color: white;
+    padding: 50px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-error {
+    border: 1px solid red;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+input {
+    padding: 10px 20px;
+    margin: 10px 40px;
+}
+
+table {
+    margin: 50px 10px;
+}

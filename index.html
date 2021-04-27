@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/styles/index.css" />
+    <script src="/scripts/index.js"></script>
+</head>
+
+<body>
+    <main>
+        <section>
+            <div class="popup-off" id="popup">
+                <div onclick="closepopup()" style="background-color: white;">CLOSE</div>
+                <div class="popupContent" id="popupContent">
+
+                </div>
+            </div>
+            <div class="main-body">
+                <div class="tables">
+                    <label>Tables</label>
+                    <input id="SearchTable" placeholder="Serach Tables" onkeyup="tablesSearch(this.value)" />
+                    <div id="tablesList" class="tablesList">
+
+                    </div>
+                </div>
+                <div class="items">
+                    <label>Items</label>
+                    <input placeholder="Serach Items" onkeyup="itemsSearch(this.value)" />
+                    <div id="itemsList" class="itemsList">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
