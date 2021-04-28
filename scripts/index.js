@@ -26,14 +26,19 @@ let items = [
         course: "desserts"
     },
     {
+        name: "Lassi",
+        price: 150.00,
+        course: "beverages"
+    },
+    {
         name: "Gajar Ka Halwa",
         price: 85.00,
         course: "desserts"
     },
     {
-        name: "Kaju ki Barfi",
-        price: 120.00,
-        course: "desserts"
+        name: "Paneer Tikka",
+        price: 105.00,
+        course: "Appetizers Or Starters"
     },
     {
         name: "Kheer",
@@ -46,34 +51,30 @@ let items = [
         course: "desserts"
     },
     {
-        name: "Paneer Tikka",
-        price: 105.00,
-        course: "Appetizers Or Starters"
-    },
-    {
         name: "Manchuria",
         price: 85.00,
         course: "Appetizers Or Starters"
+    },
+    {
+        name: "Kaju ki Barfi",
+        price: 120.00,
+        course: "desserts"
     },
     {
         name: "Samosa",
         price: 120.00,
         course: "Appetizers Or Starters"
     },
-    {
-        name: "Butter Nan",
-        price: 150.00,
-        course: "Appetizers Or Starters"
-    },
-    {
-        name: "Lassi",
-        price: 150.00,
-        course: "beverages"
-    },
+
     {
         name: "Masala Chai",
         price: 110.00,
         course: "beverages"
+    },
+    {
+        name: "Butter Nan",
+        price: 150.00,
+        course: "Appetizers Or Starters"
     },
     {
         name: "South indian Coffee",
@@ -289,6 +290,7 @@ function generatePopup(id) {
             td.innerHTML = "DELETE";
             td.setAttribute("onclick", "deleteItemFromTable(event)")
             td.id = id + "-" + index + "-delete";
+            td.className = "deleteItem";
             tr.appendChild(td);
 
             table.appendChild(tr);

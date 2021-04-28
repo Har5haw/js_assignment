@@ -96,3 +96,7 @@ input {
 table {
     margin: 50px 10px;
 }
+
+.deleteItem{
+    cursor: pointer;
+}
