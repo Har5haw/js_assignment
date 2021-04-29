@@ -1,102 +1,3 @@
-let tables = [
-    {
-        name: "Harsha",
-        total_price: 0.0,
-        total_items: 0,
-        items: []
-    },
-    {
-        name: "Vardhan",
-        total_price: 0.0,
-        total_items: 0,
-        items: []
-    },
-    {
-        name: "Shaw",
-        total_price: 0.0,
-        total_items: 0,
-        items: []
-    }
-]
-
-let items = [
-    {
-        name: "Gulab Jamun",
-        price: 105.00,
-        course: "desserts"
-    },
-    {
-        name: "Lassi",
-        price: 150.00,
-        course: "beverages"
-    },
-    {
-        name: "Gajar Ka Halwa",
-        price: 85.00,
-        course: "desserts"
-    },
-    {
-        name: "Paneer Tikka",
-        price: 105.00,
-        course: "Appetizers Or Starters"
-    },
-    {
-        name: "Kheer",
-        price: 150.00,
-        course: "desserts"
-    },
-    {
-        name: "Rasgulla",
-        price: 110.00,
-        course: "desserts"
-    },
-    {
-        name: "Manchuria",
-        price: 85.00,
-        course: "Appetizers Or Starters"
-    },
-    {
-        name: "Kaju ki Barfi",
-        price: 120.00,
-        course: "desserts"
-    },
-    {
-        name: "Samosa",
-        price: 120.00,
-        course: "Appetizers Or Starters"
-    },
-
-    {
-        name: "Masala Chai",
-        price: 110.00,
-        course: "beverages"
-    },
-    {
-        name: "Butter Nan",
-        price: 150.00,
-        course: "Appetizers Or Starters"
-    },
-    {
-        name: "South indian Coffee",
-        price: 105.00,
-        course: "beverages"
-    },
-    {
-        name: "Biryani",
-        price: 185.00,
-        course: "Large"
-    },
-    {
-        name: "Chicken curry",
-        price: 120.00,
-        course: "Curries"
-    },
-    {
-        name: "Sushi",
-        price: 150.00,
-        course: "Appetizers Or Starters"
-    }
-]
 
 refreshAllTables = () => {
     let tableContainer = document.getElementById("tablesList");
@@ -111,7 +12,7 @@ refreshAllTables = () => {
         tableItem.setAttribute("ondragover", "allowDrop(event)");
         tableItem.setAttribute("onclick", "tableClick(event.target.id)");
 
-        tableItem.innerHTML = element.name + "<br>" + "Amount: " + element.total_price + " Rs | Total items: " + element.total_items;
+        tableItem.innerHTML = "Table Name: " + element.name + "<br>" + "Amount: " + element.total_price + " Rs | Total items: " + element.total_items;
 
         tableContainer.appendChild(tableItem);
     });
@@ -129,7 +30,7 @@ refreshAllItems = () => {
         item.setAttribute("draggable", "true");
         item.setAttribute("ondragstart", "drag(event)");
 
-        item.innerHTML = element.name + "<br>" + "Price: " + element.price + " Rs";
+        item.innerHTML = "Item Name: " + element.name + "<br>" + "Price: " + element.price + " Rs";
 
         itemContainer.appendChild(item);
     });
@@ -240,10 +141,17 @@ function allowDrop(event) {
 function generatePopup(id) {
     let popup = document.getElementById("popupContent");
 
+    let close = document.createElement("div");
+    close.innerHTML = "✕"
+    close.setAttribute("onclick", "closepopup()");
+    close.className = "close-popup";
+
     popup.innerHTML = '';
 
+    popup.appendChild(close);
+
     let title = document.createElement('div');
-    title.innerHTML = tables[id].name;
+    title.innerHTML = "Table Name: " + tables[id].name;
 
     popup.appendChild(title);
 
@@ -287,7 +195,8 @@ function generatePopup(id) {
 
             tr.appendChild(td);
             td = document.createElement('td');
-            td.innerHTML = "DELETE";
+            img = document.createElement('img');
+            td.innerHTML = "";
             td.setAttribute("onclick", "deleteItemFromTable(event)")
             td.id = id + "-" + index + "-delete";
             td.className = "deleteItem";
@@ -306,6 +215,7 @@ function generatePopup(id) {
 
     let totalPrice = document.createElement('div')
     totalPrice.innerHTML = "Total Price: " + tables[id].total_price;
+    totalPrice.id = "popup-total-price"
 
     popup.appendChild(totalPrice);
 
@@ -324,13 +234,16 @@ function closepopup() {
 }
 
 function changeServings(event) {
-    if (event.target.value >= 1) {
+    if (event.target.value >= 1 && event.target.value < 1000000) {
         let input = document.getElementById(event.target.id);
         input.className = "";
 
         let [tableId, itemId] = event.target.id.split("-");
         tables[tableId].total_price += (event.target.value - tables[tableId].items[itemId].servings) * tables[tableId].items[itemId].price;
         tables[tableId].items[itemId].servings = event.target.value;
+
+        let popupTotalPrice = document.getElementById("popup-total-price");
+        popupTotalPrice.innerHTML = "Total Price: " + tables[tableId].total_price;
         refreshAllTables();
     } else {
         let input = document.getElementById(event.target.id);

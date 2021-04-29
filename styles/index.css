@@ -1,5 +1,6 @@
 body {
     margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .main-body {
@@ -24,6 +25,8 @@ body {
 .itemsList {
     overflow-x: hidden;
     overflow-y: auto;
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
 }
 
 .items {
@@ -38,10 +41,7 @@ body {
     box-shadow: 1px 1px 5px 1px #888888;
     padding: 40px 40px;
     border-radius: 20px;
-}
-
-.tableContent {
-    background-color: lightblue;
+    cursor: pointer;
 }
 
 .item {
@@ -49,10 +49,7 @@ body {
     box-shadow: 1px 1px 5px 1px #888888;
     padding: 40px 40px;
     border-radius: 20px;
-}
-
-.itemContent {
-    background-color: lightblue;
+    cursor: grabbing;
 }
 
 .popup-on {
@@ -77,8 +74,33 @@ body {
     padding: 50px 50px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    border-radius: 20px;
+    animation-name: popup-animation;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+    position: relative;
+    overflow-y: auto;
+    max-height: 70vh;
+    min-width: 35vw;
+    min-height: 30vh;
+}
+
+.close-popup {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-top-right-radius: 20px;
+    color: red;
+    font-weight: bold;
+}
+
+.close-popup:hover {
+    background-color: rgb(255, 0, 0);
+    color: white;
 }
 
 .input-error {
@@ -94,9 +116,79 @@ input {
 }
 
 table {
-    margin: 50px 10px;
+    margin: 50px 0px;
 }
 
-.deleteItem{
+.deleteItem {
     cursor: pointer;
+    background-image: url(/images/delete.png);
+    height: 10px;
+    width: 10px;
+    background-size: contain;
+}
+
+@keyframes popup-animation {
+    0% {
+        transform: scaleX(0) scaleY(0);
+    }
+    100% {
+        transform: scaleX(1) scaleY(1);
+    }
+}
+
+.tables-title {
+    display: block;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.items-title {
+    display: block;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* 
+ {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+   */
+
+td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+@media only screen and (max-width: 600px) {
+    .tables {
+        width: 50vw;
+    }
+    .items {
+        width: 50vw;
+    }
+    .itemsList {
+        grid-template-columns: auto;
+    }
+    input {
+        padding: 10px 20px;
+        margin: 10px 10px;
+    }
 }
