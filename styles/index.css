@@ -20,6 +20,7 @@ body {
 .tablesList {
     overflow-x: hidden;
     overflow-y: auto;
+    padding: 50px;
 }
 
 .itemsList {
@@ -27,6 +28,7 @@ body {
     overflow-y: auto;
     display: inline-grid;
     grid-template-columns: auto auto auto;
+    padding: 50px;
 }
 
 .items {
