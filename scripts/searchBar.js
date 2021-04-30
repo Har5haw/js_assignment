@@ -5,7 +5,7 @@ function tablesSearch(val) {
     if (val || search_table_text) {
         search_table_text = val;
         clearTimeout(timeoutId);
-        timeoutId = setTimeout(doneTypingTables, 500);
+        timeoutId = setTimeout(doneTypingTables, 400);
     }
 }
 
@@ -26,7 +26,7 @@ function doneTypingTables() {
                 tableItem.setAttribute("ondragover", "allowDrop(event)");
                 tableItem.setAttribute("onclick", "tableClick(event.target.id)");
 
-                tableItem.innerHTML = element.name + "<br>" + "Amount: " + element.total_price + " Rs | Total items: " + element.total_items;
+                tableItem.innerHTML = "Table Name: " + element.name + "<br>" + "Amount: " + element.total_price + " Rs | Total items: " + element.total_items;
 
                 tableContainer.appendChild(tableItem);
             }
@@ -42,7 +42,7 @@ function itemsSearch(val) {
     if (val || search_item_text) {
         search_item_text = val;
         clearTimeout(timeoutId);
-        timeoutId = setTimeout(doneTypingItems, 500);
+        timeoutId = setTimeout(doneTypingItems, 400);
     }
 }
 
@@ -62,7 +62,7 @@ function doneTypingItems() {
                 item.setAttribute("draggable", "true");
                 item.setAttribute("ondragstart", "drag(event)");
 
-                item.innerHTML = element.name + "<br>" + "Price: " + element.price + " Rs";
+                item.innerHTML = "Item Name: " + element.name + "<br>" + "Price: " + element.price + " Rs";
 
                 itemContainer.appendChild(item);
             }

@@ -95,5 +95,30 @@ let items = [
         name: "Sushi",
         price: 150.00,
         course: "Appetizers Or Starters"
+    },
+    {
+        name: "Mutton curry",
+        price: 180.00,
+        course: "Curries"
+    },
+    {
+        name: "Fish curry",
+        price: 150.00,
+        course: "Curries"
+    },
+    {
+        name: "Egg pakodi",
+        price: 110.00,
+        course: "Appetizers Or Starters"
+    },
+    {
+        name: "Egg curry",
+        price: 120.00,
+        course: "Curries"
+    },
+    {
+        name: "Coke",
+        price: 50.00,
+        course: "beverages"
     }
 ]

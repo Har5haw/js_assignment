@@ -80,7 +80,7 @@ body {
     align-items: center;
     border-radius: 20px;
     animation-name: popup-animation;
-    animation-duration: 0.3s;
+    animation-duration: 0.4s;
     animation-timing-function: ease-in-out;
     position: relative;
     overflow-y: auto;
@@ -181,11 +181,11 @@ th {
     color: white;
 }
 
-.error{
+.error {
     color: red;
 }
 
-.no-error{
+.no-error {
     display: none;
 }
 
