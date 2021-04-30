@@ -119,7 +119,7 @@ function changeServings(event) {
         input.className = "input-error";
 
         let span = document.getElementById(event.target.id + "-error");
-        span.innerHTML = "should be between 1 and 1000";
+        span.innerHTML = "Servings should be between 1 and 1000";
     }
 }
 
