@@ -8,13 +8,17 @@ function drop(event) {
     var id = event.dataTransfer.getData("id");
     let tableId = event.target.id;
 
-    if (!tables[tableId].items.filter((e) => e.name === items[id].name).length) {
+    let [item] = tables[tableId].items.filter((e) => e.name === items[id].name);
 
+    if (!item) {
         tables[tableId].total_items += 1;
         tables[tableId].total_price += items[id].price;
         tables[tableId].items.push({ ...items[id], servings: 1 });
-        refreshAllTables();
+    } else {
+        item.servings += 1;
+        tables[tableId].total_price += item.price;
     }
+    refreshAllTables();
 }
 
 function allowDrop(event) {

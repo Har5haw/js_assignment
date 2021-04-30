@@ -52,7 +52,8 @@ function generatePopup(id) {
             td = document.createElement('td');
             let input = document.createElement('input');
             input.id = id + "-" + index;
-            input.setAttribute("onkeyup", "changeServings(event)");
+            input.setAttribute("onchange", "changeServings(event)");
+            input.setAttribute("type", "number");
             input.setAttribute("value", element.servings);
             let span = document.createElement('span');
             span.id = id + "-" + index + "-error";
@@ -66,7 +67,7 @@ function generatePopup(id) {
             let div = document.createElement('div');
             div.className = "deleteItem";
             div.id = id + "-" + index + "-delete";
-            div.setAttribute("onclick", "deleteItemFromTable(event)");
+            div.setAttribute("onclick", "deleteItemFromTable(event.target.id)");
             td.appendChild(div);
             tr.appendChild(td);
 
@@ -105,9 +106,14 @@ function closepopup() {
 }
 
 function changeServings(event) {
-    
+
     let input = document.getElementById(event.target.id);
     let span = document.getElementById(event.target.id + "-error");
+
+    if (event.target.value == '0') {
+        deleteItemFromTable(event.target.id);
+        return;
+    }
 
     if (event.target.value >= 1 && event.target.value < 1000) {
 
@@ -129,8 +135,8 @@ function changeServings(event) {
     }
 }
 
-function deleteItemFromTable(event) {
-    let [tableId, itemId] = event.target.id.split("-");
+function deleteItemFromTable(id) {
+    let [tableId, itemId] = id.split("-");
 
     tables[tableId].total_price -= tables[tableId].items[itemId].price * tables[tableId].items[itemId].servings;
     tables[tableId].total_items -= 1;
